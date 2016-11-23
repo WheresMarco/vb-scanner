@@ -3,7 +3,7 @@
 Plugin Name: Odd Scanner
 Plugin URI: http://oddalice.com
 Description: This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a> for known vulnerabilities.
-Version: 0.1
+Version: 1.0
 Author: Odd Alice
 Author URI: http://oddalice.com
 Text Domain: odd-scanner
@@ -139,7 +139,7 @@ class OddScanner {
     endforeach;
 
     return $all_plugins;
-    
+
   }
 
 }
