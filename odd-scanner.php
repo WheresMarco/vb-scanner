@@ -47,8 +47,6 @@ class OddScanner {
       );
     } );
 
-
-    $this->auto_warning();
   }
 
   /**
@@ -128,9 +126,7 @@ class OddScanner {
    */
   private function scan_plugins() {
 
-    // Check if get_plugins() function exists. This is required on the front
-    // end of the site, since it is in a file that is normally only
-    // loaded in the admin.
+    // Check if get_plugins() function exists.
     if ( ! function_exists( 'get_plugins' ) ) {
       require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
