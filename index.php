@@ -53,7 +53,7 @@ class OddScanner {
             if ( $vulnerabilities ) :
               foreach ( $vulnerabilities as $vulnerability ) :
                 // Check against current version and warn if bad!
-                if ((float) $plugin['Version'] <= (float) $vulnerability['fixed_in']) :
+                if ( (float) $plugin['Version'] <= (float) $vulnerability['fixed_in'] ) :
                   echo '<h3 style="color: #D54E21;">' . __( 'There is an vulnerability in the version you are using.', 'odd-scanner' ) . '</h3>';
                   echo '<p>' . $vulnerability['title'] . '</p>';
 
