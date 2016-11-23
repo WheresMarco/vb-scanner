@@ -11,33 +11,53 @@ Domain Path: /languages
 */
 
 class OddScanner {
+
+  /**
+   * The prefix of the transient that will be used to cache data.
+   *
+   * @since    1.0.0
+   * @access   private
+   * @var      string    $transient_name  The transient name
+   */
   private $transient_name = 'ODD-SCANNER';
 
+  /**
+   * Initialize the class and set its properties.
+   *
+   * @since    1.0.0
+   */
   function __construct() {
-    add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
-    add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+    // Start upp the textdomain to make it i18n
+    add_action( 'plugins_loaded', function() {
+      load_plugin_textdomain( 'odd-scanner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+    } );
+
+    // Set the admin menu item and the page for it
+    add_action( 'admin_menu', function() {
+      add_options_page(
+        'Odd Scanner',
+        'Odd Scanner',
+        'manage_options',
+        'odd-scanner',
+        array(
+          $this,
+          'settings_page'
+        )
+      );
+    } );
+
   }
 
-  function load_plugin_textdomain() {
-    load_plugin_textdomain( 'odd-scanner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-  }
+  /**
+   * Displays a settings page that lists all the plugins and there vulnerabilities
+   *
+   * @since    1.0.0
+   */
+  function settings_page() {
 
-  function admin_menu() {
-		add_options_page(
-			'Odd Scanner',
-			'Odd Scanner',
-			'manage_options',
-			'odd-scanner',
-			array(
-				$this,
-				'settings_page'
-			)
-		);
-	}
-
-	function settings_page() {
     $plugins = $this->scan_plugins();
-		?>
+    ?>
     <div class="wrap">
       <h1>Odd Scanner</h1>
       <p><?php _e( 'This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a>. It does not contain information about every plugin and the information may be inaccurate.<br /> To be on the safe side you should always be running the latest version of your plugins.', 'odd-scanner' ); ?></p>
@@ -84,15 +104,21 @@ class OddScanner {
       ?>
     </div>
     <?php
-	}
 
+  }
 
+  /**
+   * Scans the plugins that are on the site for vulnerabilities
+   *
+   * @since    1.0.0
+   */
   private function scan_plugins() {
+
     // Check if get_plugins() function exists. This is required on the front
     // end of the site, since it is in a file that is normally only
     // loaded in the admin.
     if ( ! function_exists( 'get_plugins' ) ) {
-    	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+      require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
 
     $all_plugins = get_plugins();
@@ -113,7 +139,9 @@ class OddScanner {
     endforeach;
 
     return $all_plugins;
+    
   }
+
 }
 
 $oddscanner = new OddScanner;
