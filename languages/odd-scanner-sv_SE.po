@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odd Scanner\n"
+"POT-Creation-Date: 2016-11-23 13:58+0100\n"
+"PO-Revision-Date: 2016-11-23 14:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: index.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: index.php:38
+msgid ""
+"This plugin checks all your installed plugins with the <a href=\"https://"
+"wpvulndb.com\">WPScan Vulnerability Database</a>. It does not contain "
+"information about every plugin and the information may be inaccurate.<br /> "
+"To be on the safe side you should always be running the latest version of "
+"your plugins."
+msgstr ""
+"Det här tillägget kontrollerar alla dina tillägg mot <a href=\"https://"
+"wpvulndb.com\">WPScan Vulnerability Database</a>. Den innehåller inte "
+"information om alla tillägg och informationen kan vara felaktig.<br /> För "
+"att vara på den säkra sidan bör du alltid använda den senaste version av "
+"dina tillägg."
+
+#: index.php:52
+msgid "There is an vulnerability in the version you are using."
+msgstr "Det finns en sårbarhet i den versionen som du använder."
+
+#: index.php:56
+msgid "References"
+msgstr "Referenser"
+
+#: index.php:64
+msgid "Update now"
+msgstr "Uppdatera"
+
+#: index.php:67
+msgid "Could not find any vulnerabilities for the version you are using."
+msgstr "Kunde inte hitta några sårbarheter i versionen du använder."
+
+#: index.php:71
+msgid "Could not find any vulnerabilities for this plugin."
+msgstr "Kunde inte hitta några sårbarheter för detta tillägg."
+
+#: index.php:74
+msgid "Information updated:"
+msgstr "Information uppdaterad:"
+
+#: index.php:76
+msgid "Could not find any information about this plugin."
+msgstr "Kunde inte hitta någon information om detta tillägg."
+
+#. Plugin Name of the plugin/theme
+msgid "Odd Scanner"
+msgstr "Odd Scanner"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://oddalice.com"
+msgstr "http://oddalice.se"
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin checks all your installed plugins with the <a href=\"https://"
+"wpvulndb.com\">WPScan Vulnerability Database</a> for known vulnerabilities."
+msgstr ""
+"Det här tillägget kontrollerar alla dina tillägg mot <a href=\"https://"
+"wpvulndb.com\">WPScan Vulnerability Database</a> för kända sårbarheter."
+
+#. Author of the plugin/theme
+msgid "Odd Alice"
+msgstr "Odd Alice"
