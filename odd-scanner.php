@@ -47,6 +47,8 @@ class OddScanner {
       );
     } );
 
+
+    $this->auto_warning();
   }
 
   /**
@@ -57,6 +59,10 @@ class OddScanner {
   function settings_page() {
 
     $plugins = $this->scan_plugins();
+
+    // Force WP to check plugins for updates and get the info
+    do_action( "wp_update_plugins" );
+    $update_plugins = get_site_transient( 'update_plugins' );
     ?>
     <div class="wrap">
       <h1>Odd Scanner</h1>
@@ -86,7 +92,15 @@ class OddScanner {
                       endforeach;
                     echo '</ul>';
 
-                    echo '<a href="plugins.php" class="button button-primary">' . __( 'Update now', 'odd-scanner' ) . '</a>';
+                    if ($update_plugins->response) :
+                      $response = array_values($update_plugins->response)[0];
+                      if (strpos($response->plugin, sanitize_title( $plugin['Name'] )) !== false) :
+                        _e( '<h4>There is an update to this plugin</h4>', 'odd-scanner' );
+                        echo '<a href="plugins.php" class="button button-primary">' . __( 'Update now', 'odd-scanner' ) . '</a>';
+                      else :
+                        _e( '<h4>There is no update to this plugin</h4>', 'odd-scanner' );
+                      endif;
+                    endif;
                   endif;
                 else :
                   echo '<p>' . __( 'Could not find any vulnerabilities for the version you are using.', 'odd-scanner' ) . '</p>';
@@ -125,7 +139,7 @@ class OddScanner {
 
     // Loop over the plugin list and get information from the wpvulndb
     foreach ($all_plugins as $plugin_key => $plugin) :
-      if ( false === ( $all_plugins[$plugin_key]['wpvulndb'] = json_decode( get_transient( $this->transient_name . '-' . strtoupper( sanitize_title( $plugin['Name'] ) ) ), true ) ) ) :
+      if ( NULL === ( $all_plugins[$plugin_key]['wpvulndb'] = json_decode( get_transient( $this->transient_name . '-' . strtoupper( sanitize_title( $plugin['Name'] ) ) ), true ) ) ) :
         $request = wp_remote_get('https://wpvulndb.com/api/v2/plugins/' . sanitize_title( $plugin['Name'] ));
 
         // We are only intressted in the requests that are not 404

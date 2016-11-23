@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Odd Scanner\n"
-"POT-Creation-Date: 2016-11-23 13:58+0100\n"
-"PO-Revision-Date: 2016-11-23 14:02+0100\n"
+"POT-Creation-Date: 2016-11-23 16:34+0100\n"
+"PO-Revision-Date: 2016-11-23 16:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-WPHeader: odd-scanner.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: index.php:38
+#: odd-scanner.php:69
 msgid ""
 "This plugin checks all your installed plugins with the <a href=\"https://"
 "wpvulndb.com\">WPScan Vulnerability Database</a>. It does not contain "
@@ -34,31 +34,39 @@ msgstr ""
 "att vara på den säkra sidan bör du alltid använda den senaste version av "
 "dina tillägg."
 
-#: index.php:52
+#: odd-scanner.php:83
 msgid "There is an vulnerability in the version you are using."
 msgstr "Det finns en sårbarhet i den versionen som du använder."
 
-#: index.php:56
+#: odd-scanner.php:87
 msgid "References"
 msgstr "Referenser"
 
-#: index.php:64
+#: odd-scanner.php:98
+msgid "<h4>There is an update to this plugin</h4>"
+msgstr "<h4>Det finns en uppdatering till det här tillägget</h4>"
+
+#: odd-scanner.php:99
 msgid "Update now"
 msgstr "Uppdatera"
 
-#: index.php:67
+#: odd-scanner.php:101
+msgid "<h4>There is no update to this plugin</h4>"
+msgstr "<h4>Det finns ingen uppdatering till det här tillägget</h4>"
+
+#: odd-scanner.php:106
 msgid "Could not find any vulnerabilities for the version you are using."
 msgstr "Kunde inte hitta några sårbarheter i versionen du använder."
 
-#: index.php:71
+#: odd-scanner.php:110
 msgid "Could not find any vulnerabilities for this plugin."
 msgstr "Kunde inte hitta några sårbarheter för detta tillägg."
 
-#: index.php:74
+#: odd-scanner.php:113
 msgid "Information updated:"
 msgstr "Information uppdaterad:"
 
-#: index.php:76
+#: odd-scanner.php:115
 msgid "Could not find any information about this plugin."
 msgstr "Kunde inte hitta någon information om detta tillägg."
 
