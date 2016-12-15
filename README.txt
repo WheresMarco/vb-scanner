@@ -1,5 +1,5 @@
 === Odd Scanner ===
-Contributors: wheresmarco
+Contributors: oddalice, wheresmarco
 Donate link: http://oddalice.com
 Tags: plugins, wordpress, security, scanner
 Requires at least: 4.6.0
