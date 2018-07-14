@@ -4,7 +4,7 @@ Plugin Name: Vulnerability Scanner
 Plugin URI: https://wheresmar.co
 Description: This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a> for known vulnerabilities.
 Version: 1.0
-Author: WheresMarco
+Author: Marco Hyyryläinen
 Author URI: https://wheresmar.co
 Text Domain: vb-scanner
 Domain Path: /languages
