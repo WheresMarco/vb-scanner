@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Odd Scanner
-Plugin URI: http://oddalice.com
+Plugin Name: Vulnerability Scanner
+Plugin URI: https://wheresmar.co
 Description: This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a> for known vulnerabilities.
 Version: 1.0
-Author: Odd Alice
-Author URI: http://oddalice.com
-Text Domain: odd-scanner
+Author: WheresMarco
+Author URI: https://wheresmar.co
+Text Domain: vb-scanner
 Domain Path: /languages
 */
 
-class OddScanner {
+class VBScanner {
 
   /**
    * The prefix of the transient that will be used to cache data.
@@ -19,7 +19,7 @@ class OddScanner {
    * @access   private
    * @var      string    $transient_name  The transient name
    */
-  private $transient_name = 'ODD-SCANNER';
+  private $transient_name = 'VB-SCANNER';
 
   /**
    * Initialize the class and set its properties.
@@ -30,16 +30,16 @@ class OddScanner {
 
     // Start upp the textdomain to make it i18n
     add_action( 'plugins_loaded', function() {
-      load_plugin_textdomain( 'odd-scanner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+      load_plugin_textdomain( 'vb-scanner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
     } );
 
     // Set the admin menu item and the page for it
     add_action( 'admin_menu', function() {
       add_options_page(
-        'Odd Scanner',
-        'Odd Scanner',
+        'Vulnerability Scanner',
+        'Vulnerability Scanner',
         'manage_options',
-        'odd-scanner',
+        'vb-scanner',
         array(
           $this,
           'settings_page'
@@ -63,8 +63,8 @@ class OddScanner {
     $update_plugins = get_site_transient( 'update_plugins' );
     ?>
     <div class="wrap">
-      <h1>Odd Scanner</h1>
-      <p><?php _e( 'This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a>. It does not contain information about every plugin and the information may be inaccurate.<br /> To be on the safe side you should always be running the latest version of your plugins.', 'odd-scanner' ); ?></p>
+      <h1>Vulnerability Scanner</h1>
+      <p><?php _e( 'This plugin checks all your installed plugins with the <a href="https://wpvulndb.com">WPScan Vulnerability Database</a>. It does not contain information about every plugin and the information may be inaccurate.<br /> To be on the safe side you should always be running the latest version of your plugins.', 'vb-scanner' ); ?></p>
 
       <?php
         foreach ( $plugins as $plugin ) :
@@ -78,11 +78,11 @@ class OddScanner {
               foreach ( $vulnerabilities as $vulnerability ) :
                 // Check against current version and warn if bad!
                 if ( (float) $plugin['Version'] <= (float) $vulnerability['fixed_in'] ) :
-                  echo '<h3 style="color: #D54E21;">' . __( 'There is an vulnerability in the version you are using.', 'odd-scanner' ) . '</h3>';
+                  echo '<h3 style="color: #D54E21;">' . __( 'There is an vulnerability in the version you are using.', 'vb-scanner' ) . '</h3>';
                   echo '<p>' . $vulnerability['title'] . '</p>';
 
                   if ( $vulnerability['references'] ) :
-                    echo '<h4>' . __( 'References', 'odd-scanner' ) . '</h4>';
+                    echo '<h4>' . __( 'References', 'vb-scanner' ) . '</h4>';
 
                     echo '<ul>';
                       foreach ( $vulnerability['references']['url'] as $reference ) :
@@ -93,24 +93,24 @@ class OddScanner {
                     if ($update_plugins->response) :
                       $response = array_values($update_plugins->response)[0];
                       if (strpos($response->plugin, sanitize_title( $plugin['Name'] )) !== false) :
-                        _e( '<h4>There is an update to this plugin</h4>', 'odd-scanner' );
-                        echo '<a href="plugins.php" class="button button-primary">' . __( 'Update now', 'odd-scanner' ) . '</a>';
+                        _e( '<h4>There is an update to this plugin</h4>', 'vb-scanner' );
+                        echo '<a href="plugins.php" class="button button-primary">' . __( 'Update now', 'vb-scanner' ) . '</a>';
                       else :
-                        _e( '<h4>There is no update to this plugin</h4>', 'odd-scanner' );
+                        _e( '<h4>There is no update to this plugin</h4>', 'vb-scanner' );
                       endif;
                     endif;
                   endif;
                 else :
-                  echo '<p>' . __( 'Could not find any vulnerabilities for the version you are using.', 'odd-scanner' ) . '</p>';
+                  echo '<p>' . __( 'Could not find any vulnerabilities for the version you are using.', 'vb-scanner' ) . '</p>';
                 endif;
               endforeach;
             else :
-              echo '<p>' . __( 'Could not find any vulnerabilities for this plugin.', 'odd-scanner' ) . '</p>';
+              echo '<p>' . __( 'Could not find any vulnerabilities for this plugin.', 'vb-scanner' ) . '</p>';
             endif;
 
-            echo '<p><i>' . __( 'Information updated:', 'odd-scanner' ) . ' ' . date_i18n( get_option( 'date_format' ), strtotime( $wpvulndb['last_updated'] ) ) . ' ' . date_i18n( get_option( 'time_format' ), strtotime( $wpvulndb['last_updated'] ) ) . '</i></p>';
+            echo '<p><i>' . __( 'Information updated:', 'vb-scanner' ) . ' ' . date_i18n( get_option( 'date_format' ), strtotime( $wpvulndb['last_updated'] ) ) . ' ' . date_i18n( get_option( 'time_format' ), strtotime( $wpvulndb['last_updated'] ) ) . '</i></p>';
           else :
-            echo '<p>' . __( 'Could not find any information about this plugin.', 'odd-scanner' ) . '</p>';
+            echo '<p>' . __( 'Could not find any information about this plugin.', 'vb-scanner' ) . '</p>';
           endif;
         endforeach;
       ?>
@@ -154,4 +154,4 @@ class OddScanner {
 
 }
 
-$oddscanner = new OddScanner;
+$vbscanner = new VBScanner;
